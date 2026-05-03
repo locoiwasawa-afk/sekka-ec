@@ -79,7 +79,7 @@
 }
 
 /* Utility for narin.jp style spacing */
-.mn-120 {
-  margin-top: 120px;
-  margin-bottom: 120px;
+.py-120 {
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
