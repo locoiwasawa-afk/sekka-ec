@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Noto+Serif+JP:wght@300;400&display=swap');
+
+@theme {
+  --font-sans: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif JP", serif;
+  --font-display: "Cormorant Garamond", serif;
+
+  --color-brand-gold: #B8A88A;
+  --color-brand-ice: #C5D0DC;
+  --color-brand-text: #2D2D2D;
+  --color-brand-bg-soft: #F8F8F8;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-brand-text font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .brand-name {
+    @apply font-serif font-light;
+  }
+
+  .eng-text {
+    @apply font-display font-light;
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.jp-phrase {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Loading Animation */
+@keyframes loadingScreen {
+  0% { opacity: 1; pointer-events: auto; }
+  85% { opacity: 1; pointer-events: auto; }
+  100% { opacity: 0; pointer-events: none; visibility: hidden; }
+}
+
+@keyframes loadingLogo {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.loading-screen {
+  animation: loadingScreen 2.5s forwards;
+}
+
+.loading-logo {
+  animation: loadingLogo 2s forwards;
+}
+
+/* Loop Scroll */
+@keyframes loopScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-loop-scroll {
+  animation: loopScroll 30s linear infinite;
+}
+
+.animate-loop-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Utility for narin.jp style spacing */
+.mn-120 {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
