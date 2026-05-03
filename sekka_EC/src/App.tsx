@@ -227,14 +227,30 @@ export default function App() {
               {/* Semi-transparent Overlay */}
               <div className="absolute inset-0 z-20" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}></div>
 
-              <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4">
-                <h1 className="text-4xl md:text-6xl font-serif font-light tracking-[0.3em] text-brand-text mb-6">
+              <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 text-white drop-shadow-md">
+                <h1 className="text-4xl md:text-6xl font-serif font-light tracking-[0.3em] mb-6">
                   雪華 <span className="font-display">SEKKA</span>
                 </h1>
-                <p className="text-sm md:text-lg font-serif font-light tracking-[0.2em] text-brand-text">
+                <p className="text-sm md:text-lg font-serif font-light tracking-[0.2em]">
                   <span className="jp-phrase">静かに輝く、</span><span className="jp-phrase">あなただけの結晶</span>
                 </p>
               </div>
+
+              {/* Scroll Down Arrow */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2, duration: 1 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white z-30 drop-shadow-md"
+              >
+                <span className="text-[10px] tracking-widest font-light opacity-80 uppercase">Scroll</span>
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                >
+                  <ArrowDown size={16} strokeWidth={1} className="opacity-80" />
+                </motion.div>
+              </motion.div>
             </section>
 
             {/* Loop Scroll (Product Band) */}
@@ -243,7 +259,7 @@ export default function App() {
                 {[...PRODUCTS, ...PRODUCTS].map((product, index) => (
                   <div key={index} className="w-[16.666%] shrink-0 px-2 group cursor-pointer" onClick={() => navigateToProduct(product)}>
                     <div className="aspect-[4/3] overflow-hidden bg-brand-bg-soft mb-3">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-85" />
                     </div>
                     <div className="text-center">
                       <p className="eng-text text-xs tracking-widest">{product.name}</p>
@@ -255,7 +271,7 @@ export default function App() {
             </section>
 
             {/* Collection Grid */}
-            <section id="collection" className="mn-120 px-6 max-w-7xl mx-auto">
+            <section id="collection" className="py-120 px-6 max-w-7xl mx-auto">
               <Reveal>
                 <div className="text-center mb-20 md:mb-32">
                   <h3 className="eng-text text-4xl md:text-5xl font-light mb-4">Collection</h3>
@@ -275,11 +291,11 @@ export default function App() {
                       onClick={() => navigateToCategory(cat.tag)}
                       className="group relative block w-full aspect-square bg-brand-bg-soft overflow-hidden"
                     >
-                      <img
-                        src={cat.img}
-                        alt={cat.tag}
-                        className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 opacity-90"
-                      />
+                        <img
+                          src={cat.img}
+                          alt={cat.tag}
+                          className="w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-85 opacity-90"
+                        />
                       <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
                         <span className="eng-text text-2xl md:text-3xl text-white md:text-brand-text opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
@@ -293,7 +309,7 @@ export default function App() {
             </section>
 
             {/* Featured Products */}
-            <section className="mn-120 bg-brand-bg-soft/50 px-6 py-20">
+            <section className="py-120 bg-brand-bg-soft/50 px-6">
               <div className="max-w-7xl mx-auto">
                 <Reveal>
                   <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-6">
@@ -316,7 +332,7 @@ export default function App() {
                           <img
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+                            className="w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-85"
                           />
                         </div>
                         <div className="text-center space-y-1">
@@ -331,7 +347,7 @@ export default function App() {
             </section>
 
             {/* About Section */}
-            <section id="about" className="mn-120 px-6 overflow-hidden">
+            <section id="about" className="py-120 px-6 overflow-hidden">
               <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16 md:gap-32">
                 <Reveal>
                   <div className="relative aspect-[4/5] bg-brand-bg-soft">
@@ -372,7 +388,7 @@ export default function App() {
             </section>
 
             {/* Quality Section */}
-            <section className="bg-brand-bg-soft mn-120 py-20">
+            <section className="bg-brand-bg-soft py-120">
               <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <Reveal>
                   <div className="space-y-6">
@@ -397,7 +413,7 @@ export default function App() {
             </section>
 
             {/* News Section */}
-            <section id="news" className="mn-120 px-6 max-w-3xl mx-auto">
+            <section id="news" className="py-120 px-6 max-w-3xl mx-auto">
               <Reveal>
                 <div className="text-center mb-16 md:mb-24">
                   <h3 className="eng-text text-4xl md:text-5xl font-light mb-4">News</h3>
@@ -534,7 +550,7 @@ export default function App() {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+                        className="w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-85"
                       />
                     </div>
                     <div className="text-center space-y-1">
@@ -607,7 +623,7 @@ export default function App() {
                 {PRODUCTS.slice(0, 4).map((p) => (
                   <div key={p.id} className="cursor-pointer group" onClick={() => navigateToProduct(p)}>
                     <div className="aspect-square bg-brand-bg-soft overflow-hidden mb-4">
-                      <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                      <img src={p.image} alt={p.name} className="w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-85" />
                     </div>
                     <p className="eng-text text-sm">{p.name}</p>
                   </div>
