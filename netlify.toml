@@ -1,4 +1,4 @@
 [build]
-  base = "sekka_EC"
+  base = "sekka_EC/sekka_EC"
   command = "npm run build"
-  publish = "sekka_EC/dist"
+  publish = "sekka_EC/sekka_EC/dist"
